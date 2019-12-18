@@ -12,7 +12,7 @@ class SearchForm extends Component {
     }
 
     componentDidMount() {
-        const sortedData = data.sort();
+        const sortedData = data.sort((a,b) => (a>b) ? 1 : -1);
         this.setState({ sortedData })
     }
 
@@ -31,11 +31,14 @@ class SearchForm extends Component {
     }
 
     binarySearch = (array, num, start, end, cnt=0) => {
+        num = Number(num);
+
         start = start === undefined ? 0 : start;
         end = end === undefined ? array.length : end;
 
         if(start > end) {
-            this.setState({counter: cnt});
+            console.log('start > end count:' + cnt)
+            this.setState({counter: cnt, notFound: true});
             return -1;
         }
 
@@ -43,25 +46,22 @@ class SearchForm extends Component {
         const item = array[index];
 
         console.log('index :' + index)
-        console.log('item :' + item)
-        console.log('start: '+ start, 'end: ' +end)
+        console.log('mid :' + (item) )
+        console.log('search num :' + (num))
+        console.log('start: '+  start, 'end: ' +end)
 
+ 
         if(item === num) {
-            console.log(cnt)
-            this.setState({counter: cnt, notFound: false})
-            return index;
+            console.log('count:' + cnt)
+            this.setState({ counter: cnt, notFound: false})
+          return index;
         } else if (item < num) {
             return this.binarySearch(array, num, index + 1, end, cnt+1);
         } else if (item > num) {
             return this.binarySearch(array, num, start, index-1, cnt+1);
         }
 
-        
-
-       
-
     }
-
 
     handleInputChange = ev => {
         this.setState( { input: ev.target.value})
@@ -72,12 +72,12 @@ class SearchForm extends Component {
         return(
             <div className='SearchForm'>
                 <form>
-                    <input type='text' name='input' id='input' onChange = { ev => this.handleInputChange(ev)} />
+                    <input onChange = { ev => this.handleInputChange(ev)} type='text' name='input' id='input'  />
                     <button type='button' onClick={() => this.linearSearch(this.state.data, this.state.input)}>Linear Search</button>
                     <button type='button' onClick={() => this.binarySearch(this.state.sortedData, this.state.input)}>Binary Search</button>
                 </form>  
                 <div className = 'result'>
-                    {this.state.counter ? `The number found in ${this.state.counter} searches`: ''}
+                    {this.state.counter ? `The number was found in ${this.state.counter} searches` : ''}
                     {this.state.notFound ? `That number was not found` : ''}
                 </div>
             </div>
