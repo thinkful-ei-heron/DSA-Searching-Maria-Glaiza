@@ -17,7 +17,7 @@ class SearchForm extends Component {
     }
 
     linearSearch = (array, num) => {
-        console.log(array)
+        // console.log(array)
         num = Number(num);
         let i=0;
         while (array[i] !== num && i<array.length) {
@@ -38,7 +38,7 @@ class SearchForm extends Component {
 
 
         if(start > end) {
-            console.log('start > end count:' + cnt)
+            // console.log('start > end count:' + cnt)
             this.setState({counter: cnt, notFound: true});
             return -1;
         }
