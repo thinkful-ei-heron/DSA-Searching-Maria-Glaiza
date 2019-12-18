@@ -34,7 +34,8 @@ class SearchForm extends Component {
         num = Number(num);
 
         start = start === undefined ? 0 : start;
-        end = end === undefined ? array.length : end;
+        end = end === undefined ? array.length-1: end;
+
 
         if(start > end) {
             console.log('start > end count:' + cnt)
@@ -45,14 +46,18 @@ class SearchForm extends Component {
         const index = Math.floor((start + end) / 2);
         const item = array[index];
 
-        console.log('index :' + index)
-        console.log('mid :' + (item) )
-        console.log('search num :' + (num))
-        console.log('start: '+  start, 'end: ' +end)
+        // console.log('index :' + index)
+        // console.log('mid :' + (item) )
+        // console.log('search num :' + (num))
+        // console.log('start: '+  start, 'end: ' +end)
 
+        if(start === end && item !== num) {
+            // console.log('start===end count :' + cnt);
+            return this.setState({ counter: null, notFound: true })
+        }
  
         if(item === num) {
-            console.log('count:' + cnt)
+            // console.log('count:' + cnt)
             this.setState({ counter: cnt, notFound: false})
           return index;
         } else if (item < num) {
@@ -78,7 +83,7 @@ class SearchForm extends Component {
                 </form>  
                 <div className = 'result'>
                     {this.state.counter ? `The number was found in ${this.state.counter} searches` : ''}
-                    {this.state.notFound ? `That number was not found` : ''}
+                    {this.state.notFound ? `The number was not found` : ''}
                 </div>
             </div>
             
