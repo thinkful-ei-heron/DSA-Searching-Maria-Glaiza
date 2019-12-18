@@ -1,8 +1,13 @@
+const BST = require('./BST')
+
+
+
 //#1 How many searches?
 
 function binarySerach(array, value, cnt= 0, start, end) {
     var start = start === undefined ? 0 : start;
     var end = end === undefined ? 0 : end;
+    
     if(start > end) {
         return -1;
     }
@@ -49,3 +54,36 @@ console.log(binarySerach([3, 5, 6, 8, 11, 12, 14, 15, 17, 18], 1));
 //@4 =  left: 12, middle: 17 , right: 18
 //@5 = left:12 , middle: 18, right: 18
 // 5 recursive calls needed, returns null
+
+
+
+//#3: Find a Book 
+
+//#4: Searching in a BST 
+//1.a 
+//in-order: 14 15 19 25 27 35 79 89 90 91 
+//pre-order: 35 25 15 14 19 27 89 79 91 90
+//postorder: 14 15 19 25 27 35 79 89 90 91 (ANSWER )
+            //         35
+            //         / \
+            //       25   89
+            //     / \    / \
+            //    15 27  79  91
+            //    /\         /
+            //  14   19     90
+
+
+
+//1.b 
+// post order : 5 7 6 9 11 10 8
+// pre order : 8 6 5 7 10 9 11 
+            //          8
+            //         / \
+            //       6     10
+            //     / \    / \
+            //     5  7  9  11
+    
+
+//#5. 
+      
+
