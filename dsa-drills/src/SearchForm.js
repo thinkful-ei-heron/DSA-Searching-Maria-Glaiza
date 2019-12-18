@@ -31,6 +31,7 @@ class SearchForm extends Component {
     }
 
     binarySearch = (array, num, start, end, cnt=0) => {
+        // console.log(array)
         num = Number(num);
 
         start = start === undefined ? 0 : start;
@@ -39,7 +40,7 @@ class SearchForm extends Component {
 
         if(start > end) {
             // console.log('start > end count:' + cnt)
-            this.setState({counter: cnt, notFound: true});
+            this.setState({counter: null, notFound: true});
             return -1;
         }
 
