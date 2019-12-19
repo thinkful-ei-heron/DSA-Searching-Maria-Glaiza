@@ -198,7 +198,6 @@ function postOrder(tree){
     console.log(tree.key);
 }
 //#6
-function main() {
 
 const officersTree = new BinarySearchTree();
 officersTree.insert(5, 'Captain Picard');
@@ -211,9 +210,30 @@ officersTree.insert(8, 'Lt Cmdr Crusher');
 officersTree.insert(7, 'Lieutenant Selar');
 console.log(officersTree);
 
-}
-main(); 
+function bfs(tree , values = []) {
+    const queue = new Queue;
+    const node = tree;
+    queue.enqueue(node);
+    console.log('P-> ' + node.key +': '+ node.value);
 
+    while(queue.first || queue.last) {
+        const _node = queue.dequeue();
+        values.push(_node.value);
+
+        if(_node.left) {
+            console.log('L-> ' + _node.left.key +': '+ _node.left.value);
+            queue.enqueue(_node.left);
+        }
+
+        if(_node.right) {
+            console.log('R-> ' + _node.right.key +': '+ _node.right.value);
+            queue.enqueue(_node.right);
+        }
+    }
+    return values;
+}
+
+console.log(bfs(officersTree));
 
             //          5
             //         / \
@@ -241,7 +261,7 @@ function maxProfit(arr) {
     // need to check  output: 24 
 } 
 
-console.log(maxProfit(arr));
+// console.log(maxProfit(arr));
 
 
 //#8. Egg Drop 
@@ -271,4 +291,4 @@ function eggDrop(maxHeight){
 
 }
 
-console.log(eggDrop(100)); 
+// console.log(eggDrop(100)); 
