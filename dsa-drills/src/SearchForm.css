@@ -1,0 +1,40 @@
+.SearchForm {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.btn {
+    margin-top: 2rem;
+    margin-bottom:5rem;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: .5rem;
+    margin: .5rem;
+    border: 2px solid black;
+    background: whitesmoke;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background: black;
+    color: whitesmoke;
+}
+input {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding: .2rem;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+}

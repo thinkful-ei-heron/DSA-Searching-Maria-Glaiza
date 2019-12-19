@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import data from './data';
+import './SearchForm.css';
 
 class SearchForm extends Component {
     state = {
@@ -78,9 +79,12 @@ class SearchForm extends Component {
         return(
             <div className='SearchForm'>
                 <form>
-                    <input onChange = { ev => this.handleInputChange(ev)} type='text' name='input' id='input'  />
+                    <label forhtml='input'>Enter a number: </label>
+                    <input onChange = { ev => this.handleInputChange(ev)} type='text' name='input' id='input' required/>
+                    <div className='btn'>
                     <button type='button' onClick={() => this.linearSearch(this.state.data, this.state.input)}>Linear Search</button>
                     <button type='button' onClick={() => this.binarySearch(this.state.sortedData, this.state.input)}>Binary Search</button>
+                    </div>
                 </form>  
                 <div className = 'result'>
                     {this.state.counter ? `The number was found in ${this.state.counter} searches` : ''}
